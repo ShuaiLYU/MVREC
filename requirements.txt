@@ -1,0 +1,16 @@
+alpha_clip.egg==info
+clip==1.0
+faiss_gpu==1.7.2
+labelme==5.5.0
+matplotlib==3.8.0
+numpy==2.2.1
+opencv_python==4.9.0.80
+pandas==2.2.3
+Pillow==11.0.0
+scikit_learn==1.3.2
+seaborn==0.13.2
+tensorboard==2.16.2
+tensorflow==2.18.0
+torch==2.1.0
+torchvision==0.16.0
+tqdm==4.66.1
