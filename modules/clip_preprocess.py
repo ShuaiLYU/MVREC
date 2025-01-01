@@ -1,13 +1,12 @@
 
 
 import os,sys
-p= r"/home/lyushuai/Projects/wise_pro/FabricDataSolution/"
-assert os.path.exists( os.path.join(p,"FabricDataLib" ))
-sys.path.append(p)
 
 
-import FabricDataLib
-from FabricDataLib import Bbox,RoiGenerator,resize_img_and_bbox,resize_img
+from .utils import Bbox,RoiGenerator,resize_img_and_bbox,resize_img
+
+
+
 import numpy as np
 from  PIL import  Image
 import  re

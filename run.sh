@@ -8,16 +8,16 @@ do
     exp_name=best_exp_notrain
     acti_beta=32
     classifier=EchoClassfier  # zip-adpater
-      # python run.py --data_option $datasets \
-      # --ClipModel.classifier $classifier \
-      # --ClipModel.backbone_name ViT-L/14 \
-      # --ClipModel.clip_name   $clip_name \
-      # --debug.k_shot $k_shot  \
-      # --data.input_shape 224   \
-      # --data.mv_method $mv_method \
-      # --debug.acti_beta $acti_beta \
-      # --exp_name $exp_name \
-      # --run_name MVRec-$mv_method-$classifier-ks$k_shot-acti$acti_beta
+      python run.py --data_option $datasets \
+      --ClipModel.classifier $classifier \
+      --ClipModel.backbone_name ViT-L/14 \
+      --ClipModel.clip_name   $clip_name \
+      --debug.k_shot $k_shot  \
+      --data.input_shape 224   \
+      --data.mv_method $mv_method \
+      --debug.acti_beta $acti_beta \
+      --exp_name $exp_name \
+      --run_name MVRec-$mv_method-$classifier-ks$k_shot-acti$acti_beta
 done
 
 

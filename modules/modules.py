@@ -1,9 +1,9 @@
 
 
 import os,sys
-p= r"/home/lyushuai/Projects/wise_pro/FabricDataSolution/"
-assert os.path.exists( os.path.join(p,"FabricDataLib" ))
-sys.path.append(p)
+# p= r"/home/lyushuai/Projects/wise_pro/FabricDataSolution/"
+# assert os.path.exists( os.path.join(p,"FabricDataLib" ))
+# sys.path.append(p)
 
 
 from .clip_preprocess import ClipPreprocess
@@ -34,8 +34,6 @@ def print_trainable_parameters(model):
         if param.requires_grad:
             print(f"{name}, shape: {param.shape}")
 
-from bbox_clip.bbox_clip import  BboxClip
-
 
 def create_model(exper:FM.Experiment):
     PARAM=exper.get_param()
@@ -58,9 +56,7 @@ def create_model(exper:FM.Experiment):
 
 
 
-import FabricDataLib
-
-from .multi_view_data import MultiviewRoiFabricData
+from .multi_view_data import MultiviewRoiData
 
 
 def create_train_data(exper:FM.Experiment,data_segment_key=None):
@@ -77,7 +73,7 @@ def create_train_data(exper:FM.Experiment,data_segment_key=None):
     target_size=(PARAM.data.input_shape,PARAM.data.input_shape)
     train_sample_process=ClipPreprocess(class_names,augment=True,target_size=target_size)
     if PARAM.data.roi_size_list is not None :
-        dataset = MultiviewRoiFabricData(root=PARAM.data.root,split="train",
+        dataset = MultiviewRoiData(root=PARAM.data.root,split="train",
                                          roi_size_list=PARAM.data.roi_size_list,
                                          mv_method=PARAM.data.mv_method,
                                           config_dir = PARAM.data.config_name,
@@ -129,7 +125,7 @@ def create_valid_data(exper:FM.Experiment,data_segment_key=None):
     target_size=(PARAM.data.input_shape,PARAM.data.input_shape)
     train_sample_process=ClipPreprocess(class_names,target_size=target_size,augment=False)
     if PARAM.data.roi_size_list is not None :
-        dataset = MultiviewRoiFabricData(root=PARAM.data.root,split="valid",
+        dataset = MultiviewRoiData(root=PARAM.data.root,split="valid",
                                          roi_size_list=PARAM.data.roi_size_list,
                                          mv_method=PARAM.data.mv_method,
                                          config_dir = PARAM.data.config_name,

@@ -1,5 +1,7 @@
-from FabricDataLib.fabric_data import RoiFabricData
-from FabricDataLib.utils import BaseSampleProcess,RoiGenerator,resize_img_and_bbox,resize_img,super_crop
+
+
+
+from .utils import BaseSampleProcess,RoiGenerator,resize_img_and_bbox,resize_img,super_crop
 
 from PIL import Image
 
@@ -550,8 +552,10 @@ class MultiOffsetRotateRoiSampleProcess(MultiScaleRoiSampleProcess):
                                             flips=flips,
                                             target_size=target_size)
 
+from .fabric_data import RoiFabricData
 
-class MultiviewRoiFabricData(RoiFabricData):
+
+class MultiviewRoiData(RoiFabricData):
     def __init__(self,root, split: str,roi_size_list:list,mv_method="mso", config_dir=None, sample_process=None,target_size=512, **kwargs):
         self.target_size = target_size
         super().__init__( root, split, config_dir, sample_process, **kwargs)
@@ -600,42 +604,7 @@ class MultiviewRoiFabricData(RoiFabricData):
 
         return listdict2dictlist(bboxes)
     
-    # def get_collate_fn(self):
 
-    #     def custom_collate_fn(batch):
-    #         """
-    #         Custom collate function to merge batch samples where each sample is a dictionary
-    #         containing lists of tensors under various keys (e.g., 'x', 'y', etc.). Tensors for each key
-    #         are concatenated along the batch dimension.
-            
-    #         Args:
-    #         batch (list): A list of data samples where each sample is a dict with keys mapping to lists of tensors.
-            
-    #         Returns:
-    #         dict: A dictionary with each key having concatenated tensors along the batch dimension.
-    #         """
-    #         # 初始化结果字典，这里将每个键的张量列表初始化为空列表
-    #         collated_dict = {}
-
-    #         # 遍历batch中的每一个样本
-    #         for sample in batch:
-    #             # 再遍历样本中的每个键
-    #             for key, value in sample.items():
-    #                 if key not in collated_dict: collated_dict[key] = []
-    #                 # 将当前样本的张量列表扩展到相应的键中
-    #                 collated_dict[key].extend(value)
-
-    #         # 对每个键的列表进行批次维度上的连接
-    #         for key, value in collated_dict.items():
-    #             if torch.is_tensor(value[0]):
-    #                 collated_dict[key] = torch.stack(value, dim=0)
-    #             else:
-    #                 collated_dict[key] = torch.tensor(value)
-
-
-    #         return collated_dict
-        
-    #     return custom_collate_fn
     
     def get_collate_fn(self):
 
