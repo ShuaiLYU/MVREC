@@ -94,12 +94,7 @@ If you use this repository or the MVTec-FS dataset, please cite our work:
 
 
 ```bibtex
-@article{author2025mvrec,
-  title={MVREC: A General Framework for Few-Shot Defect Multi-Classification},
-  author={Your Name and Others},
-  journal={Proceedings of the AAAI Conference on Artificial Intelligence},
-  year={2025}
-}
+Lyu S, Zhang R, Ma Z, et al. MVREC: A General Few-shot Defect Classification Model Using Multi-View Region-Context[C]//Proceedings of the AAAI Conference on Artificial Intelligence. 2025, 39(6): 5937-5945.
 ```
 
 ---
